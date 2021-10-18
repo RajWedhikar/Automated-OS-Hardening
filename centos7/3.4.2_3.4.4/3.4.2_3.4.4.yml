@@ -1,0 +1,17 @@
+---
+- name: Ensure /etc/hosts.allow is configured and Applying Permissions to it (3.4.2 and 3.4.4)
+  remote_user: root
+  become: yes
+  hosts: linux2
+  tasks:
+     - name: Configuring /etc/hosts.allow file (3.4.2)
+       lineinfile: 
+         path: /etc/hosts.allow
+         line: 
+           'ALL: 192.168.80.0/255.255.255.0'
+     - name: Applying Permissions (3.4.4)
+       file:
+         path: /etc/hosts.allow
+         owner: root
+         group: root
+         mode: '0644'

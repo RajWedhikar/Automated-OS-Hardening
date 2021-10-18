@@ -1,0 +1,16 @@
+---
+- name: test three
+  hosts: linux2
+  tasks: 
+    - name: disbale ssh root
+      replace:
+        path: /etc/ssh/sshd_config
+        regexp: '#PermitRootLogin yes'
+        replace: PermitRootLogin no
+#     notify: Restart sshd service
+# handlers:
+#   - name: Restart sshd service
+#     service:
+#       name: sshd
+#       state: restarted
+...

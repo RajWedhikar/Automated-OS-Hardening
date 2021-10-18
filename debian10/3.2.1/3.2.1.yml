@@ -1,0 +1,16 @@
+---
+- name: Ensure packet redirect sending is disabled (3.2.1)
+  hosts: debian
+  tasks:
+     - name: Restricting Packet Redirection
+       blockinfile:
+         path: /etc/sysctl.conf
+         block: |
+           net.ipv4.conf.all.send_redirects = 0
+           net.ipv4.conf.default.send_redirects = 0
+     - name: Running Commands To Set Active Kernel Parameters
+       shell: |
+         sysctl -w net.ipv4.conf.all.send_redirects=0
+         sysctl -w net.ipv4.conf.default.send_redirects=0
+         sysctl -w net.ipv4.route.flush=1
+     

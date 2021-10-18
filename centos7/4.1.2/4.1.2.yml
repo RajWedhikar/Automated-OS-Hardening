@@ -1,0 +1,11 @@
+---
+- name: Ensure auditd service is enabled (4.1.2)
+  remote_user: root
+  become: yes
+  hosts: linux2
+  tasks:
+     - name: Enabling auditd Service
+       shell: 
+          systemctl enable auditd
+       args:
+         executable: /bin/bash

@@ -1,0 +1,9 @@
+---
+- name: Ensure filesystem integrity is regularly checked (1.4.2)
+  hosts: debian
+  tasks:
+    - cron:
+        name: "Checking Integrity Of Filesystem"
+        minute: "0"
+        hour: "5"
+        job: "/usr/bin/aide.wrapper --config /etc/aide/aide.conf --check"

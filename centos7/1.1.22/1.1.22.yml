@@ -1,0 +1,10 @@
+---
+- name: Disable Automounting (1.1.22)
+  remote_user: root
+  become: yes
+  hosts: linux2
+  tasks:
+     - name: Disabling automounting
+       shell: systemctl disable autofs
+       args:
+         executable: /bin/bash

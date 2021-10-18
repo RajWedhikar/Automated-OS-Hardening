@@ -1,0 +1,9 @@
+---
+- name: Ensure auditd service is installed (4.1.1.1)
+  hosts: debian
+  tasks:
+     - name: Installing auditd Service
+       shell: 
+          apt install auditd -y
+       args:
+         executable: /bin/bash

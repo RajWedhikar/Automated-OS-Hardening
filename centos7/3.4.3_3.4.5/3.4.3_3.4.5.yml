@@ -1,0 +1,19 @@
+---
+- name: Ensure /etc/hosts.deny is configured and Applying Permissions to it (3.4.3) and 3.4.5)
+  remote_user: root
+  become: yes
+  hosts: linux2
+  tasks:
+     - name: Configuring /etc/hosts.deny file (3.4.3)
+       lineinfile: 
+         path: /etc/hosts.deny
+         line:
+           'ALL: ALL'
+     - name: Applying Permissions (3.4.5)
+       file:
+         path: /etc/hosts.deny
+         owner: root
+         group: root
+         mode: '0644'
+
+

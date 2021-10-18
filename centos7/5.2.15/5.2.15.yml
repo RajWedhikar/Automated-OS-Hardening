@@ -1,0 +1,18 @@
+---
+- name: Ensure SSH access is limited (5.2.15)
+  remote_user: root
+  become: yes
+  hosts: linux2
+  tasks:
+     - name: Configuring /etc/ssh/sshd_config file
+       blockinfile: 
+         path: /etc/ssh/sshd_config
+         block: |
+           AllowUsers user1 user2 
+           AllowGroups user1 user2 
+           DenyUsers user3
+           DenyGroups user3
+     - name: Restarting ssh Service
+       service:
+         name: sshd
+         state: restarted

@@ -1,0 +1,9 @@
+---
+- name: Ensure cron daemon is enabled (5.1.1)
+  hosts: debian
+  tasks:
+     - name: Enabling cron service
+       shell: 
+         systemctl enable cron
+       args: 
+         executable: /bin/bash

@@ -1,0 +1,9 @@
+---
+- name: Ensure auditd service is enabled (4.1.1.2)
+  hosts: debian
+  tasks:
+     - name: Enabling auditd Service
+       shell: 
+          systemctl enable auditd
+       args:
+         executable: /bin/bash

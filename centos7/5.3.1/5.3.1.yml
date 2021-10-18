@@ -1,0 +1,25 @@
+---
+- name: Ensure password creation requirements are configured (5.3.1)
+  remote_user: root
+  become: yes
+  hosts: linux2
+  tasks:
+     - name: Configuring /etc/security/pwquality.conf file
+       blockinfile: 
+         path: /etc/security/pwquality.conf
+         block: |
+           minlen=14
+           dcredit=-1
+           ucredit=-1
+           ocredit=-1 
+           lcredit=-1
+     - name: Configuring /etc/pam.d/system-auth file
+       replace: 
+         path: /etc/pam.d/system-auth 
+         regexp: 'authtok_type=$'
+         replace: 'authtok_type= minlen=14 lcredit=-1 ucredit=-1 dcredit=-1 ocredit=-1 enforce_for_root'
+     - name: Configuring /etc/pam.d/password-auth file
+       replace: 
+         path: /etc/pam.d/password-auth 
+         regexp: 'authtok_type=$'
+         replace: 'authtok_type= minlen=14 lcredit=-1 ucredit=-1 dcredit=-1 ocredit=-1 enforce_for_root'

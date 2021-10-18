@@ -1,0 +1,13 @@
+---
+- hosts: linux2
+  tasks:
+    - name: disbale root login
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        line: PermitRootLogin no
+      notify: Restart sshd
+  handlers:
+    - name: Restart sshd
+      service:
+        name: sshd
+        state: restarted

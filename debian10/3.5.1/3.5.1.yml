@@ -1,0 +1,10 @@
+---
+- name: Ensure iptables is installed (3.5.1)
+  hosts: debian
+  tasks:
+     - name: Installing Iptables
+       shell:
+         apt install iptables -y
+       args:
+         executable: /bin/bash
+               

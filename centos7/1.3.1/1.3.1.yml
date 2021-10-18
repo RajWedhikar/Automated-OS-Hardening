@@ -1,0 +1,11 @@
+---
+- name: Ensure filesystem integrity is regularly checked (1.3.2)
+  remote_user: root
+  become: yes
+  hosts: linux2
+  tasks:
+    - cron:
+        name: "Checking Integrity Of Filesystem"
+        minute: "0"
+        hour: "5"
+        job: "/usr/sbin/aide --check"

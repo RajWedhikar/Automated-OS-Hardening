@@ -1,0 +1,14 @@
+---
+- name: Ensure mounting of FAT filesystems is disabled (1.1.1.8)
+  remote_user: root
+  become: yes
+  hosts: linux2
+  tasks:
+     - name: Creating Config file
+       shell:
+         'touch /etc/modprobe.d/CIS.conf'
+     - name: Configuring /etc/modprobe.d/CIS.conf file
+       blockinfile:
+         path: /etc/modprobe.d/CIS.conf
+         block: |
+           install vfat /bin/true

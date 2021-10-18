@@ -1,0 +1,10 @@
+---
+- name: Ensure SELinux is installed (1.6.2)
+  remote_user: root
+  become: yes
+  hosts: linux2
+  tasks:
+     - name: Installing SELinux
+       yum:
+         name: libselinux
+         state: present

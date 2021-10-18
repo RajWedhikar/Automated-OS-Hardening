@@ -1,0 +1,13 @@
+---
+- name: Ensure SSH root login is disabled (5.2.10)
+  hosts: debian
+  tasks:
+     - name: Configuring /etc/ssh/sshd_config file
+       lineinfile: 
+         path: /etc/ssh/sshd_config
+         line: 
+           PermitRootLogin no
+     - name: Restarting ssh Service
+       service:
+         name: sshd
+         state: restarted    

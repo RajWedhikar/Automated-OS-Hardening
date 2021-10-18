@@ -1,0 +1,14 @@
+---
+- name: Ensure changes to system administration scope (sudoers) is collected (4.1.14)
+  hosts: debian
+  tasks:
+     - name: Creating Neccessary file
+       file:
+         path: /etc/audit/rules.d/scope.rules
+         state: touch
+     - name: Writting rules for System Administration scope
+       blockinfile:
+         path: /etc/audit/rules.d/logins.rules
+         block: |
+           -w /etc/sudoers -p wa -k scope 
+           -w /etc/sudoers.d/ -p wa -k scope

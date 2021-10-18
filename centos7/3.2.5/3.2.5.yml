@@ -1,0 +1,17 @@
+---
+- name: Ensure broadcast ICMP requests are ignored (3.2.5)
+  remote_user: root
+  become: yes
+  hosts: linux2
+  tasks:
+     - name: Ignoring Broadcast ICMP Request
+       blockinfile:
+         path: /etc/sysctl.conf
+         block: |
+           net.ipv4.icmp_echo_ignore_broadcasts = 1
+     - name: Running Commands To Set Active Kernel Parameters
+       shell: |
+         sysctl -w net.ipv4.icmp_echo_ignore_broadcasts=1
+         sysctl -w net.ipv4.route.flush=1
+       
+

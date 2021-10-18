@@ -1,0 +1,61 @@
+---
+- name: Rules For (6.1.2 to 6.1.9)
+  remote_user: root
+  become: yes
+  hosts: linux2
+  tasks:
+    - name: Ensure permissions on /etc/passwd are configured (6.1.2)
+      shell: |
+        chown root:root /etc/passwd 
+        chmod 644 /etc/passwd
+      args:
+         executable: /bin/bash  
+
+    - name: Ensure permissions on /etc/shadow are configured (6.1.3)
+      shell: |
+        chown root:root /etc/shadow 
+        chmod 000 /etc/shadow
+      args:
+         executable: /bin/bash  
+
+    - name: Ensure permissions on /etc/group are configured (6.1.4)
+      shell: |
+        chown root:root /etc/group
+        chmod 644 /etc/group
+      args:
+         executable: /bin/bash  
+
+    - name: Ensure permissions on /etc/gshadow are configured (6.1.5)
+      shell: |
+        chown root:root /etc/gshadow
+        chmod 000 /etc/gshadow
+      args:
+         executable: /bin/bash  
+
+    - name: Ensure permissions on /etc/passwd- are configured (6.1.6)
+      shell: |
+        chown root:root /etc/passwd-
+        chmod 600 /etc/passwd-
+      args:
+         executable: /bin/bash  
+
+    - name: Ensure permissions on /etc/shadow- are configured (6.1.7)
+      shell: |
+        chown root:root /etc/shadow-
+        chmod 600 /etc/shadow-
+      args:
+         executable: /bin/bash  
+    
+    - name: Ensure permissions on /etc/group- are configured (6.1.8)
+      shell: |
+        chown root:root /etc/group-
+        chmod 600 /etc/group-
+      args:
+         executable: /bin/bash  
+
+    - name: Ensure permissions on /etc/gshadow- are configured (6.1.9)
+      shell: |
+        chown root:root /etc/gshadow-
+        chmod 600 /etc/gshadow-
+      args:
+         executable: /bin/bash 

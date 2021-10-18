@@ -1,0 +1,11 @@
+---
+- name: Ensure SELinux policy is configured (1.6.1.3)
+  remote_user: root
+  become: yes
+  hosts: linux2
+  tasks:
+     - name: Configuring /etc/selinux/config file
+       replace:
+         path: /etc/selinux/config
+         regexp: '^SELINUXTYPE.*'
+         replace: 'SELINUXTYPE=targeted'

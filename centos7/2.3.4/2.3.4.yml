@@ -1,0 +1,10 @@
+---
+- name: Ensure telnet client is not installed (2.3.4)
+  remote_user: root
+  become: yes
+  hosts: linux2
+  tasks:
+     - name: Removing Telnet Client
+       yum:
+         name: telnet
+         state: absent

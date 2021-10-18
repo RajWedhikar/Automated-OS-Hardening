@@ -1,0 +1,12 @@
+---
+- name: Ensure login and logout events are collected (4.1.8)
+  remote_user: root
+  become: yes
+  hosts: linux2
+  tasks:
+     - name: Generating login and logout logs
+       blockinfile:
+         path: /etc/audit/audit.rules
+         block: |
+           -w /var/log/lastlog -p wa -k logins 
+           -w /var/run/faillock/ -p wa -k logins

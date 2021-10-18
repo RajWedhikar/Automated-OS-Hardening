@@ -1,0 +1,7 @@
+---
+  - name: Applying Event audit policies
+    include: /etc/ansible/windows/audit.yml
+  - name: Applying Windows Password policies
+    include: /etc/ansible/windows/password.yml
+  - name: Enabling Windows Firewall
+    include: /etc/ansible/windows/firewall.yml  

@@ -1,0 +1,37 @@
+---
+  - name: 1.1.21
+    include: /etc/ansible/debian10/1.1.21/1.1.21.yml
+  - name: 1.4.2
+    include: /etc/ansible/debian10/1.4.2/1.4.2.yml
+  - name: 2.3.4
+    include: /etc/ansible/debian10/2.3.4/2.3.4.yml
+  - name: 3.2.1
+    include: /etc/ansible/debian10/3.2.1/3.2.1.yml
+  - name: 3.2.2
+    include: /etc/ansible/debian10/3.2.2/3.2.2.yml
+  - name: 3.3.5
+    include: /etc/ansible/debian10/3.3.5/3.3.5.yml
+  - name: 3.5.1
+    include: /etc/ansible/debian10/3.5.1/3.5.1.yml
+  - name: 4.1.1.1
+    include: /etc/ansible/debian10/4.1.1.1/4.1.1.1.yml
+  - name: 4.1.1.2
+    include: /etc/ansible/debian10/4.1.1.2/4.1.1.2.yml
+  - name: 4.1.7
+    include: /etc/ansible/debian10/4.1.7/4.1.7.yml
+  - name: 4.1.14
+    include: /etc/ansible/debian10/4.1.14/4.1.14.yml
+  - name: 5.1.1
+    include: /etc/ansible/debian10/5.1.1/5.1.1.yml
+  - name: 5.2.10
+    include: /etc/ansible/debian10/5.2.10/5.2.10.yml
+  - name: 5.2.18
+    include: /etc/ansible/debian10/5.2.18/5.2.18.yml
+  - name: 5.2.19
+    include: /etc/ansible/debian10/5.2.19/5.2.19.yml
+  - name: 5.3.1
+    include: /etc/ansible/debian10/5.3.1/5.3.1.yml
+  - name: 5.3.3
+    include: /etc/ansible/debian10/5.3.3/5.3.3.yml
+  - name: 5.6
+    include: /etc/ansible/debian10/5.6/5.6.yml

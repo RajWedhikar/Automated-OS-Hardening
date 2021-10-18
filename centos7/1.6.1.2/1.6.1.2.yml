@@ -1,0 +1,11 @@
+---
+- name: Ensure the SELinux state is enforcing (1.6.1.2)
+  remote_user: root
+  become: yes
+  hosts: linux2
+  tasks:
+     - name: Setting SELinux to Enforcing mode
+       shell: 
+          "setenforce 1"
+       args:
+         executable: /bin/bash

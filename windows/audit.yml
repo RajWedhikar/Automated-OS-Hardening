@@ -1,0 +1,39 @@
+---
+  - name: Configuring Event Audits 
+    hosts: windows
+    tasks:
+      - name: enable AuditSystemEvents
+        win_security_policy:
+          section: Event Audit
+          key: AuditSystemEvents
+          value: 1
+
+      - name: enable AuditLogonEvents 
+        win_security_policy:
+          section: Event Audit
+          key: AuditLogonEvents
+          value: 1
+
+      - name: enable AuditPrivilegeUse 
+        win_security_policy:
+          section: Event Audit
+          key: AuditPrivilegeUse 
+          value: 1 
+
+      - name: enable AuditPolicyChange 
+        win_security_policy:
+          section: Event Audit
+          key: AuditPolicyChange 
+          value: 1
+
+      - name: enable AuditProcessTracking 
+        win_security_policy:
+          section: Event Audit
+          key: AuditProcessTracking 
+          value: 1
+      - name: Updating group Policy
+        win_shell:
+          gpupdate /force
+    
+      
+          

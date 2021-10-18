@@ -1,0 +1,23 @@
+---
+- name: Ensure password creation requirements are configured (5.3.1)
+  hosts: debian
+  tasks:
+    - name : Installing pam_pwquality module
+      shell: 
+        apt install libpam-pwquality -y
+      args:
+        executable: /bin/bash
+    - name: Configuring /etc/security/pwquality.conf file
+      blockinfile: 
+        path: /etc/security/pwquality.conf
+        block: |
+          minlen=14
+          dcredit=-1
+          ucredit=-1
+          ocredit=-1 
+          lcredit=-1
+    - name: Configuring common-password file
+      lineinfile:
+        path: /etc/pam.d/common-password
+        line: 
+          password requisite pam_pwquality.so retry=3

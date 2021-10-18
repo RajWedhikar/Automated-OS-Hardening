@@ -1,0 +1,14 @@
+---
+- name: Ensure access to the su command is restricted (5.6)
+  hosts: debian
+  tasks:
+    - name: Creating seperate group for su users
+      shell:
+        groupadd -f sugroup
+      args:
+        executable: /bin/bash
+    - name: Configuring /etc/pam.d/su file
+      lineinfile:
+        path: /etc/pam.d/su
+        line:
+          auth required pam_wheel.so use_uid group=sugroup

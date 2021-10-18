@@ -1,0 +1,9 @@
+---
+- name: Ensure password reuse is limited (5.3.3)
+  hosts: debian
+  tasks:
+    - name: Configuring common-password file
+      lineinfile:
+        path: /etc/pam.d/common-password
+        line: 
+          password required pam_pwhistory.so remember=5
