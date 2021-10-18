@@ -1,0 +1,2 @@
+[linux2]
+192.168.80.135 ansible_ssh_user=user1
